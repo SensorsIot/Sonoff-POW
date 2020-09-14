@@ -1,9 +1,8 @@
 /*
-This libary is an enhanced version of the ITEAD.cc library
+  This libary is an enhanced version of the ITEAD.cc library
 
- It reads the values from the Sonoff POW HLW8012 chip and calculates the respective Power, current, and oltage values. Only voltage or current reading can be chosen.
- 
-
+  It reads the values from the Sonoff POW HLW8012 chip and calculates the respective
+  Power, current, and voltage values. Only voltage or current reading can be chosen.
 
   Copyright (c) [2016] [Iteand.cc and Andreas Spiess]
 
@@ -42,11 +41,11 @@ uint32_t ESP8266PowerClass::power_freq= 0;
 uint32_t ESP8266PowerClass::voltage_freq= 0;
 uint32_t ESP8266PowerClass::current_freq= 0;
 
-void ESP8266PowerClass::measurePowerFreq(void)
+void ICACHE_RAM_ATTR ESP8266PowerClass::measurePowerFreq(void)
 {
     power_freq_cnt++;
 }
-void ESP8266PowerClass::measureCurrenFreq(void)   // counts number of interrupts CF1 pin
+void ICACHE_RAM_ATTR ESP8266PowerClass::measureCurrenFreq(void)   // counts number of interrupts CF1 pin
 {
     current_freq_cnt++;
     if(voltage_freq_cnt != 0)
@@ -54,7 +53,7 @@ void ESP8266PowerClass::measureCurrenFreq(void)   // counts number of interrupts
         voltage_freq_cnt = 0;
     }
 }
-void ESP8266PowerClass::measureVoltageFreq(void)    // counts number of interrupts CF1 pin
+void ICACHE_RAM_ATTR ESP8266PowerClass::measureVoltageFreq(void)    // counts number of interrupts CF1 pin
 {
     voltage_freq_cnt++;
     if(current_freq_cnt != 0)
@@ -175,8 +174,6 @@ void ESP8266PowerClass::timerCallback(void)
                                         
     } 
 }
-
-
 
 ESP8266PowerClass::ESP8266PowerClass()  // Constructor
 {
